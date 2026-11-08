@@ -28,6 +28,13 @@ A small, fast screenshot beautifier for macOS. Capture, frame, annotate, redact,
 3. The first time, **right-click the app → Open → Open**. Release builds aren't notarized by Apple (that needs a paid developer account), so a normal double-click is blocked the first time.
 4. Allow **Screen & System Audio Recording** when asked (System Settings → Privacy & Security), then relaunch PrimeSnap.
 
+Or with [Homebrew](https://brew.sh):
+
+```sh
+brew trust nivohavi/tap   # newer Homebrew asks you to trust third-party taps once
+brew install --cask nivohavi/tap/primesnap
+```
+
 Requires macOS 14 Sonoma or later.
 
 > Because release builds are ad-hoc signed, macOS may ask for Screen Recording again after you update to a new version.
