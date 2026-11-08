@@ -22,13 +22,18 @@ jobs:
       - name: Build app (ad-hoc signed)
         run: scripts/build-app.sh
 
-      - name: Zip
-        run: ditto -c -k --keepParent build/PrimeSnap.app PrimeSnap.zip
+      - name: Package (.dmg and .zip)
+        run: |
+          scripts/make-dmg.sh
+          mv build/PrimeSnap.dmg PrimeSnap.dmg
+          ditto -c -k --keepParent build/PrimeSnap.app PrimeSnap.zip
 
       - uses: actions/upload-artifact@v4
         with:
           name: PrimeSnap
-          path: PrimeSnap.zip
+          path: |
+            PrimeSnap.dmg
+            PrimeSnap.zip
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')
@@ -43,4 +48,4 @@ jobs:
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" PrimeSnap.zip --repo "$GITHUB_REPOSITORY" --generate-notes
+        run: gh release create "$GITHUB_REF_NAME" PrimeSnap.dmg PrimeSnap.zip --repo "$GITHUB_REPOSITORY" --generate-notes

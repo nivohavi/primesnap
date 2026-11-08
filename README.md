@@ -23,8 +23,8 @@ A small, fast screenshot beautifier for macOS. Capture, frame, annotate, redact,
 
 ## Install
 
-1. Download `PrimeSnap.zip` from the [latest release](https://github.com/nivohavi/primesnap/releases/latest) and unzip it.
-2. Move `PrimeSnap.app` to **Applications**.
+1. Download **`PrimeSnap.dmg`** from the [latest release](https://github.com/nivohavi/primesnap/releases/latest).
+2. Open it and drag **PrimeSnap** onto **Applications**. (A `.zip` is there too, if you prefer.)
 3. The first time, **right-click the app → Open → Open**. Release builds aren't notarized by Apple (that needs a paid developer account), so a normal double-click is blocked the first time.
 4. Allow **Screen & System Audio Recording** when asked (System Settings → Privacy & Security), then relaunch PrimeSnap.
 
@@ -65,6 +65,7 @@ git clone https://github.com/nivohavi/primesnap.git
 cd primesnap
 scripts/build-app.sh            # -> build/PrimeSnap.app
 scripts/build-app.sh --install  # copy to /Applications and launch
+scripts/make-dmg.sh             # -> build/PrimeSnap.dmg (after build-app.sh)
 ```
 
 Needs Xcode 15.4+ (Swift 5.10).
