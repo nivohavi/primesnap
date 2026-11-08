@@ -1,0 +1,5 @@
+.build/
+build/
+.swiftpm/
+scripts/.signing-identity
+.DS_Store
