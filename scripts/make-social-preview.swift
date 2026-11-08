@@ -9,7 +9,7 @@ func load(_ path: String) -> NSImage {
     return img
 }
 let icon = load("docs/icon.png")
-let shot = load("docs/result.png")
+let shot = load("docs/screenshot.png") // the editor itself, not just an output
 
 let rep = NSBitmapImageRep(
     bitmapDataPlanes: nil, pixelsWide: Int(W), pixelsHigh: Int(H), bitsPerSample: 8, samplesPerPixel: 4,
@@ -41,13 +41,13 @@ func text(_ s: String, _ font: NSFont, _ alpha: CGFloat, at p: NSPoint, width: C
     str.draw(with: NSRect(x: p.x, y: p.y - size.height, width: width, height: size.height), options: [.usesLineFragmentOrigin])
 }
 text("PrimeSnap", .systemFont(ofSize: 72, weight: .bold), 1, at: NSPoint(x: left - 3, y: 380))
-text("Capture, frame, annotate and redact screenshots from your menu bar.", .systemFont(ofSize: 30, weight: .medium), 0.92, at: NSPoint(x: left, y: 282), width: 500)
+text("Capture, frame, annotate and redact screenshots from your menu bar.", .systemFont(ofSize: 30, weight: .medium), 0.92, at: NSPoint(x: left, y: 282), width: 460)
 text("Free  ·  Open source  ·  Native macOS", .systemFont(ofSize: 24, weight: .semibold), 0.7, at: NSPoint(x: left, y: 140))
 
 // Right: a framed result with a soft shadow.
-let shotW: CGFloat = 640
+let shotW: CGFloat = 700
 let shotH = shotW * shot.size.height / shot.size.width
-let shotRect = NSRect(x: W - shotW - 40, y: (H - shotH) / 2, width: shotW, height: shotH)
+let shotRect = NSRect(x: W - shotW - 28, y: (H - shotH) / 2, width: shotW, height: shotH)
 ctx.saveGState()
 ctx.setShadow(offset: CGSize(width: 0, height: -18), blur: 50, color: NSColor.black.withAlphaComponent(0.45).cgColor)
 NSColor.black.setFill()
